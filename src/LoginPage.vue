@@ -1,14 +1,54 @@
+<template>
+  <div class="container">
+    <div class="left-panel">
+      <h1 class="login-heading">LOG IN</h1>
+      <img src="/login-image.jpg" alt="Login Illustration" class="login-image" />
+    </div>
+
+    <div class="right-panel">
+      <h2 class="hello">Hello <span class="green">!</span></h2>
+      <p class="welcome">Welcome Back</p>
+      <p class="subtitle">Log in your account</p>
+
+      <form @submit.prevent="handleLogin">
+        <input type="text" placeholder="Username" v-model="username" required />
+        <input type="password" placeholder="Password" v-model="password" required />
+
+        <div class="options">
+          <label><input type="checkbox" /> Remember me</label>
+          <a href="#">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="login-btn">Log In</button>
+        <button type="button" class="create-btn">Create Account</button>
+      </form>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'LoginPage',
+  data() {
+    return {
+      username: '',
+      password: ''
+    };
+  },
+  methods: {
+    handleLogin() {
+      alert(`Logging in as ${this.username}`);
+    }
+  }
+};
+</script>
+
+<style scoped>
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-}
-
-body, html {
-  height: 100%;
-  width: 100%;
-  background-color: #f5f5f5;
 }
 
 .container {
@@ -17,21 +57,20 @@ body, html {
   width: 100%;
 }
 
-/* Left Panel */
 .left-panel {
   flex: 1;
   background-color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; /* Align left */
   justify-content: center;
-  padding: 20px;
+  padding-left: 60px; /* ⬅ Move content left */
 }
 
 .login-heading {
-  color: #00c853; /* Green */
+  color: #00c853;
   font-size: 36px;
-  text-align: center;
+  text-align: left;
   margin-bottom: 20px;
 }
 
@@ -41,11 +80,11 @@ body, html {
   height: auto;
 }
 
-/* Right Panel */
 .right-panel {
   flex: 1;
-  background-color: #fff;
+  background-color: #f5f5f5;
   padding: 40px;
+  padding-left: 80px; /* ⬅ Push form slightly right */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -110,3 +149,4 @@ input[type="password"] {
   margin-top: 10px;
   cursor: pointer;
 }
+</style>
